@@ -5,7 +5,7 @@ import Sidebar from "../components/common/Sidebar";
 import { useLazyGetUsersQuery } from "../store/apis";
 
 const UsersContent = () => {
-  const [trigger, { data: apiData, error, isLoading }] = useLazyGetUsersQuery();
+  const [trigger, { data: apiData, isLoading }] = useLazyGetUsersQuery();
 
   useEffect(() => {
     trigger();
@@ -16,7 +16,7 @@ const UsersContent = () => {
       <h1 className="text-3xl font-bold mb-4">Users Page</h1>
       <p className="text-gray-600">This is the users page.</p>
       {isLoading && <div>Loading...</div>}
-      {apiData?.data?.map((u) => {
+      {apiData?.data?.map((u:any) => {
         return (
           <div
             key={u._id}
@@ -39,7 +39,7 @@ const UsersContent = () => {
             <p className="text-gray-500 mt-1">{u.email}</p>
 
             <div className="mt-3 flex flex-wrap gap-2">
-              {u.roles.map((role) => (
+              {u.roles.map((role:any) => (
                 <span
                   key={role}
                   className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded"
